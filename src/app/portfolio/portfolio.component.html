@@ -1,0 +1,14 @@
+<h2>GitHub Repositories</h2>
+
+<div class="portfolio">
+  <div *ngFor="let repo of repositories" class="repo-card">
+    <h3>{{ repo.description }}</h3>
+    <img [src]="repo.image" [alt]="repo.name" class="repo-image" />
+    <p>{{ repo.language  +" "+ repo.topics}}</p>
+    <a class="repo-link"  [href]="repo.html_url" target="_blank">View GitHub Code</a>
+    <p>
+     <a class="repo-link"   href="{{repo.homepage}}" target="_blank">Visit</a>
+    </p>
+
+  </div>
+</div>

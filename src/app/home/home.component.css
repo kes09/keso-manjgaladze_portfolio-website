@@ -1,0 +1,19 @@
+.home {
+  text-align: center;
+  padding: 50px;
+  background-color: #fdd017;
+  width: 500px;
+  opacity: 0.5;
+  margin: auto;
+  border-radius: 25%;
+  font-size: large;
+  font-weight: bold;  
+  /* background-image: url('/image/image.png'); */
+  /* transform: rotate(-15grad); */
+}
+.background-container{
+  background-image: url('/image/image.png');
+  height: 100vw;
+  position: relative;
+}
+ 

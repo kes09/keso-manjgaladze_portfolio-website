@@ -1,0 +1,14 @@
+.about {
+  padding: 20px;
+  line-height: 1.6;
+  background-color: #ffd017;
+  opacity: 0.7;
+  font-size: larger;
+  font-weight: bold;
+  margin: auto;
+  text-align: center;
+}
+img{
+  width: 20px;
+  height: 20px;
+}
