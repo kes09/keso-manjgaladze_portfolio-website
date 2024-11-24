@@ -5,15 +5,15 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-portfolio',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule,],
   templateUrl: './portfolio.component.html',
   styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent implements OnInit {
   repositories: any[] = [];
+  newRepo = { name: '', description: '', language: '', homepage: '' };
 
   apiUrl = 'https://api.github.com/users/kes09/repos';
-
 
   projectImages: { [key: string]: string } = {
     'Final': '/project1.png',
@@ -28,12 +28,13 @@ export class PortfolioComponent implements OnInit {
     this.fetchRepositories();
   }
 
+  // Fetch GitHub repositories
   fetchRepositories(): void {
     this.http.get<any[]>(this.apiUrl).subscribe(
       (data) => {
         this.repositories = data.map(repo => ({
           ...repo,
-          image: this.projectImages[repo.name] || 'assets/default.png' // Assign image or default
+          image: this.projectImages[repo.name] || 'assets/default.png',
         }));
       },
       (error) => {
@@ -41,4 +42,7 @@ export class PortfolioComponent implements OnInit {
       }
     );
   }
+
+
+
 }
