@@ -25,10 +25,11 @@
 
 @media only screen and (max-width: 600px) {
   .home {
-  font-size: 0.9em; 
-  width: 85%;  
+  font-size: 0.7em; 
+  width: 75%;  
   top: 23%; 
   left: -8%;
+ 
 }
 
 .background-container {
@@ -38,9 +39,9 @@
 
 @media only screen and (min-width: 600px) {
   .home {
-    width: 90%;
-    font-size: 1.1em;
-    padding: 20px;
+    width: 85%;
+    font-size: 1.2em;
+    padding: 10px;
   }
 }
 
@@ -49,7 +50,7 @@
   .home {
   padding: 30px; 
   width: 55%;  
-  font-size: 1.2em;  
+  font-size: 1em;  
   top: 25%; 
   left: 10%;
 }
@@ -60,7 +61,7 @@
   .home {
     width: 35%;
     padding: 10px;
-    font-size: 1.2em;
+    font-size: 1em;
     top: 8%; 
     left: 25%;
   }
@@ -69,7 +70,7 @@
 @media only screen and (min-width: 1200px) {
   .home {
     width: 40%;
-    font-size: 1.2em;
+    font-size: 1em;
     padding: 10px;
     top: 8%; 
     left: 23%;
