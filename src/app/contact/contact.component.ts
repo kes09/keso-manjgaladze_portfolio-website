@@ -1,7 +1,7 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators,ReactiveFormsModule } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ContactService } from '../services/contact.service';
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-contact',
@@ -10,8 +10,11 @@ import { CommonModule } from "@angular/common";
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   contactForm: FormGroup;
+  contacts: any[] = []; 
+  editMode: boolean = false; 
+  selectedContactId: string | null = null; 
 
   constructor(private fb: FormBuilder, private contactService: ContactService) {
     this.contactForm = this.fb.group({
@@ -21,15 +24,55 @@ export class ContactComponent {
     });
   }
 
-  onSubmit() {
+  ngOnInit(): void {
+    this.loadContacts(); 
+  }
+
+  
+  onSubmit(): void {
     if (this.contactForm.valid) {
-      this.contactService.saveContactInfo(this.contactForm.value).then(() => {
-        alert('Contact information submitted successfully!');
-        this.contactForm.reset();
-      }).catch((error: any) => {
-        console.error('Error submitting contact info:', error);
-        alert('There was an error submitting your contact information.');
-      });
+      const contactData = this.contactForm.value;
+
+      if (this.editMode && this.selectedContactId) {
+        
+        this.contactService.updateContact(this.selectedContactId, contactData).then(() => {
+          alert('Contact updated successfully!');
+          this.resetForm();
+          this.loadContacts();
+        }).catch(error => {
+          console.error('Error updating contact:', error);
+          alert('Failed to update the contact.');
+        });
+      } else {
+        this.contactService.saveContactInfo(contactData).then(() => {
+          alert('Contact created successfully!');
+          this.resetForm();
+          this.loadContacts();
+        }).catch(error => {
+          console.error('Error creating contact:', error);
+          alert('Failed to create the contact.');
+        });
+      }
     }
+  }
+
+  loadContacts(): void {
+    this.contactService.getContacts().subscribe(contacts => {
+      this.contacts = contacts;
+    });
+  }
+
+  
+  editContact(contactId: string, contact: any): void {
+    this.editMode = true;
+    this.selectedContactId = contactId;
+    this.contactForm.patchValue(contact);
+  }
+
+ 
+  resetForm(): void {
+    this.contactForm.reset();
+    this.editMode = false;
+    this.selectedContactId = null;
   }
 }

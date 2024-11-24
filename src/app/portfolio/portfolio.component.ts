@@ -19,7 +19,7 @@ export class PortfolioComponent implements OnInit {
     'Final': '/project1.png',
     'main-prj': '/project2.png',
     'summer-club-application': '/project3.png',
-    'portfolio-website':'/project4.png',
+    'keso-manjgaladze_portfolio-website':'/project4.png',
   };
 
   constructor(private http: HttpClient) {}

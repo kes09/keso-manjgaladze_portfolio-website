@@ -1,11 +1,19 @@
 <nav>
-  <ul>
-    <li><a routerLink="/">Home</a></li>
-    <li><a routerLink="/about">About</a></li>
-    <li><a routerLink="/portfolio">Portfolio</a></li>
-    <li><a routerLink="/contact">Contact</a></li>
+
+  <button class="menu-toggle" (click)="toggleMenu()">
+    <i class="fa" [ngClass]="menuOpen ? 'fa-times' : 'fa-bars'" aria-hidden="true"></i>
+  </button>
+
+  
+  <ul [class.show]="menuOpen">
+    <li><a routerLink="/" (click)="toggleMenu()">Home</a></li>
+    <li><a routerLink="/about" (click)="toggleMenu()">About</a></li>
+    <li><a routerLink="/portfolio" (click)="toggleMenu()">Portfolio</a></li>
+    <li><a routerLink="/contact" (click)="toggleMenu()">Contact</a></li>
   </ul>
-    <button (click)="toggleTheme()">
-      <i class="fa" [ngClass]="theme === 'dark' ? 'fa-toggle-off  fa-3x' : 'fa-toggle-on  fa-3x'" aria-hidden="true"></i>
-    </button>
+
+ 
+  <button (click)="toggleTheme()" class="theme-toggle">
+    <i class="fa" [ngClass]="theme === 'dark' ? 'fa-toggle-off' : 'fa-toggle-on'" aria-hidden="true"></i>
+  </button>
 </nav>

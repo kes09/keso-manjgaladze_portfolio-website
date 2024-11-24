@@ -1,24 +1,43 @@
 <section class="contact">
-  <h2>Contact Me</h2>
+  <h2>{{ editMode ? 'Edit Contact' : 'Contact Me' }}</h2>
   <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
-    <label for="name">Name:</label>
-    <input id="name" formControlName="name">
-    <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched">
-      Name is required.
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input id="name" formControlName="name" placeholder="Enter your name" />
+      <div *ngIf="contactForm.get('name')?.invalid && contactForm.get('name')?.touched" class="error">
+        Name is required.
+      </div>
     </div>
 
-    <label for="email">Email:</label>
-    <input id="email" formControlName="email">
-    <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
-      Enter a valid email.
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input id="email" formControlName="email" placeholder="Enter your email" />
+      <div *ngIf="contactForm.get('email')?.invalid && contactForm.get('email')?.touched" class="error">
+        Enter a valid email.
+      </div>
     </div>
 
-    <label for="message">Message:</label>
-    <textarea id="message" formControlName="message"></textarea>
-    <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched">
-      Message is required.
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" formControlName="message" placeholder="Type your message"></textarea>
+      <div *ngIf="contactForm.get('message')?.invalid && contactForm.get('message')?.touched" class="error">
+        Message is required.
+      </div>
     </div>
 
-    <button type="submit" [disabled]="contactForm.invalid">Send</button>
+    <button type="submit" [disabled]="contactForm.invalid">
+      {{ editMode ? 'Update Contact' : 'Send Message' }}
+    </button>
+    <button type="button" *ngIf="editMode" (click)="resetForm()">Cancel</button>
   </form>
+
+  <h2>Existing Contacts</h2>
+  <div *ngFor="let contact of contacts">
+    <p>
+      <strong>{{ contact.name }}</strong> - {{ contact.email }}
+      <br />
+      {{ contact.message }}
+    </p>
+    <button (click)="editContact(contact.id, contact)">Edit</button>
+  </div>
 </section>
