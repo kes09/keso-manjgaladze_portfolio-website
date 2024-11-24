@@ -5,4 +5,7 @@
     <li><a routerLink="/portfolio">Portfolio</a></li>
     <li><a routerLink="/contact">Contact</a></li>
   </ul>
+    <button (click)="toggleTheme()">
+      <i class="fa" [ngClass]="theme === 'dark' ? 'fa-toggle-off  fa-3x' : 'fa-toggle-on  fa-3x'" aria-hidden="true"></i>
+    </button>
 </nav>

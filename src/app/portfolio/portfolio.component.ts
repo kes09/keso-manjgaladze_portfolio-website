@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 })
 export class PortfolioComponent implements OnInit {
   repositories: any[] = [];
-  
+
   apiUrl = 'https://api.github.com/users/kes09/repos';
 
   // Map repository names to image URLs

@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+.app-header {
+  background-color: var(--header-bg-color);
+  color: var(--header-text-color);
+}
+
+body.light {
+  --bg-color: #F5F5DC;
+  --text-color: black;
+  --header-bg-color: #333;
+  --header-text-color: black;
+  --home-bg-color: #fdd017;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #F5F5DC;
+  --header-bg-color: #f5f5f5;
+  --header-text-color: rgb(140, 14, 14);
+  --home-bg-color: #47927f;
+}
+
+button {
+  background-color: var(--primary-button-bg);
+  color: var(--primary-button-text);
+}
+
+.card {
+  background-color: var(--card-bg-color);
+  box-shadow: 0 4px 6px var(--card-shadow);
+} 
+.home{
+  background-color: var(--home-bg-color);
+}
+
+
