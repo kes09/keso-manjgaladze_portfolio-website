@@ -14,7 +14,7 @@ export class PortfolioComponent implements OnInit {
 
   apiUrl = 'https://api.github.com/users/kes09/repos';
 
-  // Map repository names to image URLs
+
   projectImages: { [key: string]: string } = {
     'Final': '/project1.png',
     'main-prj': '/project2.png',
